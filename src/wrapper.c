@@ -2,8 +2,7 @@
 #include <Python.h>
 #include "pow.h"
 
-static PyObject *
-mypowWrapper(PyObject *self, PyObject *args) {
+static PyObject *mypowWrapper(PyObject *self, PyObject *args){
 
     int x, y, d;
 
@@ -18,8 +17,8 @@ mypowWrapper(PyObject *self, PyObject *args) {
 
 
 static PyMethodDef myMethods[] = {
-    {"MyPow", mypowWrapper, METH_VARARGS, NULL},
-    {NULL, NULL, 0, NULL}
+    {"mypow", mypowWrapper, METH_VARARGS, NULL},
+    {NULL}
 };
 
 static PyModuleDef myModule = {
@@ -31,6 +30,6 @@ static PyModuleDef myModule = {
 };
 
 PyMODINIT_FUNC
-PyInit_MyCalc(void) {
+PyInit_xzg17(void) {
     return PyModule_Create(&myModule);
 }
