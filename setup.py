@@ -5,7 +5,7 @@ os.environ['CC'] = 'gcc'
 
 src_dir = 'src'
 
-ext_modules = [Extension('xzg17', [src_dir + '/pow.c',src_dir + '/wrapper.c'])]
+ext_modules = [Extension('xzg17', [src_dir + '/wrapper.c'])]
 
 setup(
   name='xzg17_1st',
