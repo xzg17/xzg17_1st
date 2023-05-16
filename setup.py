@@ -1,4 +1,7 @@
 from distutils.core import setup, Extension
+import os
+
+os.environ['CC'] = 'gcc'
 
 src_dir = 'src'
 
