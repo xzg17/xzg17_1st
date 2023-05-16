@@ -1,5 +1,5 @@
-#define PY_SSIZE_T_CLEAN
-#include <Python.h>
+#include <stdio.h>
+#include "calc.h"
 
 int mypow(int x, int y,int d) {
     if(y==0){
