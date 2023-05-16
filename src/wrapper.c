@@ -1,6 +1,6 @@
 #define PY_SSIZE_T_CLEAN
 #include <Python.h>
-#include "pow.h"
+#include "func.h"
 
 static PyObject *mypowWrapper(PyObject *self, PyObject *args){
 
