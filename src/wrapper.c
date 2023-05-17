@@ -18,16 +18,16 @@ static PyObject *mypowWrapper(PyObject *self, PyObject *args){
 
 static PyObject *myswapWrapper(PyObject *self, PyObject *args){
 
-    long int a, b;
+    int a, b;
 
-    if (!PyArg_ParseTuple(args, "ll", &a, &b)) {
+    if (!PyArg_ParseTuple(args, "ii", &a, &b)) {
         return NULL;
     }
     
     PyObject *list = PyList_New(2);
     
-    PyList_SET_ITEM(list, 1, PyInt_FromLong(a));
-    PyList_SET_ITEM(list, 0, PyInt_FromLong(b));
+    PyList_SET_ITEM(list, 0, PyInt_FromLong((long)b));
+    PyList_SET_ITEM(list, 1, PyInt_FromLong((long)a));
 
     return list;
 }
