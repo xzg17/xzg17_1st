@@ -26,8 +26,8 @@ static PyObject *myswapWrapper(PyObject *self, PyObject *args){
     
     PyObject *list = PyList_New(2);
     
-    PyList_SET_ITEM(list, 0, PyInt_FromLong((long)b));
-    PyList_SET_ITEM(list, 1, PyInt_FromLong((long)a));
+    PyList_SET_ITEM(list, 0, PyLong_FromLong((long)b));
+    PyList_SET_ITEM(list, 1, PyLong_FromLong((long)a));
 
     return list;
 }
