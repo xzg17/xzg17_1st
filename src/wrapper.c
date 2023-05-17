@@ -18,12 +18,11 @@ static PyObject *mypowWrapper(PyObject *self, PyObject *args){
 
 static PyObject *mysieve(PyObject *self, PyObject *args){
 
-    int n;
+    int N;
 
-    if (!PyArg_ParseTuple(args, "i", &n)) {
+    if (!PyArg_ParseTuple(args, "i", &N)) {
         return NULL;
     }
-    int N = mysieve(n);
 
     int primes[N];
     int pi = 0;
@@ -44,12 +43,16 @@ static PyObject *mysieve(PyObject *self, PyObject *args){
         }
     }
     int prime_list[pi];
+    char items[pi+2];
+    items[0] = "[";
+    items[pi+1] = "]";
     
     for(int i=0;i<pi;i++){
         prime_list[i]=primes[i];
+        items[i] = "i";
     }
 
-    return Py_BuildValue("[items]", prime_list);
+    return Py_BuildValue(items, prime_list);
 }
 
 static PyMethodDef myMethods[] = {
