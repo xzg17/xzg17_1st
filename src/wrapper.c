@@ -16,11 +16,11 @@ static PyObject *mypowWrapper(PyObject *self, PyObject *args){
 }
 
 
-static PyObject *myswap(PyObject *self, PyObject *args){
+static PyObject *myswapWrapper(PyObject *self, PyObject *args){
 
-    int a, b;
+    long int a, b;
 
-    if (!PyArg_ParseTuple(args, "ii", &a, &b)) {
+    if (!PyArg_ParseTuple(args, "ll", &a, &b)) {
         return NULL;
     }
     
@@ -34,7 +34,7 @@ static PyObject *myswap(PyObject *self, PyObject *args){
 
 static PyMethodDef myMethods[] = {
     {"mypow", mypowWrapper, METH_VARARGS, NULL},
-    {"myswap", myswap, METH_VARARGS, NULL},
+    {"myswap", myswapWrapper, METH_VARARGS, NULL},
     {NULL}
 };
 
