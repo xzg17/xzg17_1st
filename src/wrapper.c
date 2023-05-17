@@ -18,11 +18,12 @@ static PyObject *mypowWrapper(PyObject *self, PyObject *args){
 
 static PyObject *mysieve(PyObject *self, PyObject *args){
 
-    int N;
+    int n;
 
-    if (!PyArg_ParseTuple(args, "i", &N)) {
+    if (!PyArg_ParseTuple(args, "i", &n)) {
         return NULL;
     }
+    int N = mysieve(n);
 
     int primes[N];
     int pi = 0;
