@@ -16,45 +16,25 @@ static PyObject *mypowWrapper(PyObject *self, PyObject *args){
 }
 
 
-static PyObject *mysieve(PyObject *self, PyObject *args){
+static PyObject *myswap(PyObject *self, PyObject *args){
 
-    long N;
+    int a, b;
 
-    if (!PyArg_ParseTuple(args, "l", &N)) {
+    if (!PyArg_ParseTuple(args, "ii", &a, &b)) {
         return NULL;
     }
-
-    long primes[N];
-    long pi = 0;
-    long lpf[N+1];
-    for(long i=0;i<N+1;i++){
-        lpf[i]=0;
-    }
-    for(long d=2;d<N+1;d++){
-        if(lpf[d]==0){
-            lpf[d]=d;
-            primes[pi++]=d;
-        }
-        for(long p=0;p<pi;p++){
-            if((primes[p]*d > N)||(primes[p] > lpf[d])){
-                break;
-            }
-            lpf[primes[p]*d] = primes[p];
-        }
-    }
     
-    PyObject *prime_list = PyList_New(pi);
+    PyObject *list = PyList_New(2);
     
-    for(long i=0;i<pi;i++){
-        PyList_SET_ITEM(prime_list, i, PyInt_FromLong(primes[i]));
-    }
+    PyList_SET_ITEM(list, 1, PyInt_FromLong(a));
+    PyList_SET_ITEM(list, 0, PyInt_FromLong(b));
 
-    return prime_list;
+    return list;
 }
 
 static PyMethodDef myMethods[] = {
     {"mypow", mypowWrapper, METH_VARARGS, NULL},
-    {"mysieve", mysieve, METH_VARARGS, NULL},
+    {"myswap", myswap, METH_VARARGS, NULL},
     {NULL}
 };
 
