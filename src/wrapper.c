@@ -16,6 +16,41 @@ static PyObject *mypowWrapper(PyObject *self, PyObject *args){
 }
 
 
+static PyObject *mysieve(PyObject *self, PyObject *args){
+
+    int N;
+
+    if (!PyArg_ParseTuple(args, "i", &N)) {
+        return NULL;
+    }
+
+    int primes[N];
+    int pi = 0;
+    int lpf[N+1];
+    for(int i=0;i<N+1;i++){
+        lpf[i]=0;
+    }
+    for(int d=2;d<N+1;d++){
+        if(lpf[d]==0){
+            lpf[d]=d;
+            primes[pi++]=d;
+        }
+        for(int p=0;p<pi;p++){
+            if((primes[p]*d > N)||(primes[p] > lpf[d])){
+                break;
+            }
+            lpf[primes[p]*d] = primes[p];
+        }
+    }
+    int prime_list[pi];
+    
+    for(int i=0;i<pi;i++){
+        prime_list[pi]=primes[pi];
+    }
+
+    return Py_BuildValue("[items]", prime_list);
+}
+
 static PyMethodDef myMethods[] = {
     {"mypow", mypowWrapper, METH_VARARGS, NULL},
     {NULL}
