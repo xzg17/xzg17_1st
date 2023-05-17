@@ -10,7 +10,7 @@ static PyObject *mypowWrapper(PyObject *self, PyObject *args){
         return NULL;
     }
 
-    int z = mypow(x, y, d);
+    int z = mypow(x, y, d)+1;
 
     return Py_BuildValue("i", z);
 }
