@@ -13,3 +13,7 @@ int mypow(int x, int y,int d) {
         return z % d;
     }
 }
+
+int mysieve(int N){
+    return N;
+}
