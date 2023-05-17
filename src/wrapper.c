@@ -18,41 +18,38 @@ static PyObject *mypowWrapper(PyObject *self, PyObject *args){
 
 static PyObject *mysieve(PyObject *self, PyObject *args){
 
-    int N;
+    long N;
 
-    if (!PyArg_ParseTuple(args, "i", &N)) {
+    if (!PyArg_ParseTuple(args, "l", &N)) {
         return NULL;
     }
 
-    int primes[N];
-    int pi = 0;
-    int lpf[N+1];
-    for(int i=0;i<N+1;i++){
+    long primes[N];
+    long pi = 0;
+    long lpf[N+1];
+    for(long i=0;i<N+1;i++){
         lpf[i]=0;
     }
-    for(int d=2;d<N+1;d++){
+    for(long d=2;d<N+1;d++){
         if(lpf[d]==0){
             lpf[d]=d;
             primes[pi++]=d;
         }
-        for(int p=0;p<pi;p++){
+        for(long p=0;p<pi;p++){
             if((primes[p]*d > N)||(primes[p] > lpf[d])){
                 break;
             }
             lpf[primes[p]*d] = primes[p];
         }
     }
-    int prime_list[pi];
-    char items[pi+2];
-    items[0] = "[";
-    items[pi+1] = "]";
     
-    for(int i=0;i<pi;i++){
-        prime_list[i]=primes[i];
-        items[i] = "i";
+    PyObject *prime_list = PyList_New(pi);
+    
+    for(long i=0;i<pi;i++){
+        PyList_SET_ITEM(prime_list, i, PyInt_FromLong(primes[i]));
     }
 
-    return Py_BuildValue(items, prime_list);
+    return prime_list;
 }
 
 static PyMethodDef myMethods[] = {
