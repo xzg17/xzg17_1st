@@ -53,6 +53,7 @@ static PyObject *mysieve(PyObject *self, PyObject *args){
 
 static PyMethodDef myMethods[] = {
     {"mypow", mypowWrapper, METH_VARARGS, NULL},
+    {"mysieve", mysieve, METH_VARARGS, NULL},
     {NULL}
 };
 
