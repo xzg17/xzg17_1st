@@ -45,7 +45,7 @@ static PyObject *mysieve(PyObject *self, PyObject *args){
     int prime_list[pi];
     
     for(int i=0;i<pi;i++){
-        prime_list[pi]=primes[pi];
+        prime_list[i]=primes[i];
     }
 
     return Py_BuildValue("[items]", prime_list);
